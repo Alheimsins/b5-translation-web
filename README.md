@@ -2,6 +2,8 @@
 
 Webpage to make translations og b5 more accessible
 
+See it live: [b5.translations.alheimsins.net](https://b5.translations.alheimsins.net/)
+
 ## License
 
 [MIT](LICENSE)
