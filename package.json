@@ -1,0 +1,46 @@
+{
+  "name": "b5-translation-web",
+  "version": "1.0.0",
+  "description": "Webpage to make translations og b5 more accessible",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "standard && ava",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "standard-fix": "standard --fix",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alheimsins/b5-translation-web.git"
+  },
+  "keywords": [
+    "webpage",
+    "next.js",
+    "big five",
+    "translations",
+    "alheimsins"
+  ],
+  "author": "Geir Gåsodden <geir.gasodden@pythonia.no> (https://github.com/zrrrzzt)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alheimsins/b5-translation-web/issues"
+  },
+  "homepage": "https://github.com/Alheimsins/b5-translation-web#readme",
+  "dependencies": {
+    "next": "9.5.2",
+    "postcss-preset-env": "6.7.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tailwindcss": "1.6.2"
+  },
+  "devDependencies": {
+    "ava": "3.11.1",
+    "standard": "14.3.4"
+  },
+  "engines": {
+    "node": ">=12.18.3"
+  }
+}
