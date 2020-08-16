@@ -1,0 +1,12 @@
+[
+  {
+    "id": "8de764e1-6c5a-40df-ad30-2d58b578dc32",
+    "name": "b5-johnson-120-ipip-neo-pi-r",
+    "description": "Big Five Johnson 120 IPIP-NEO-PI-R questions",
+    "url": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r",
+    "files": [
+      "choices.js",
+      "questions.js"
+    ]
+  }
+]
