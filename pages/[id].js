@@ -1,8 +1,28 @@
+import { useEffect, useState } from 'react'
 import getModule from '../lib/get-module'
 
+const Language = props => {
+  const { id, text } = props
+  return (
+    <p key={id}>
+      {text}
+    </p>
+  )
+}
+
 const Details = ({ module }) => {
-  const { name, description, url } = module
-  
+  const { name, description, languagesUrl, repoUrl } = module
+  const [languages, setLanguages] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      const data = await fetch(languagesUrl)
+      const json = await data.json()
+      setLanguages(json)
+    })()
+    
+  }, [languagesUrl])
+
   return (
     <>
       <div className='flex flex-col items-center mb-4'>
@@ -13,9 +33,11 @@ const Details = ({ module }) => {
             <p className='text-gray-700 text-base'>
               {description}
             </p>
+            <h2>Choose language to translate from</h2>
+            {languages.map((lang, index) => <Language {...lang} key={index} />)}
           </div>
           <div className='flex justify-end px-6 py-4'>
-            <a href={url}>Visit repo</a>
+            <a href={repoUrl}>Visit repo</a>
           </div>
         </div>
       </div>
