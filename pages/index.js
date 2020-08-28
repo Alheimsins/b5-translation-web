@@ -2,7 +2,6 @@ import ListItem from '../components/list-item'
 const modules = require('../lib/data/modules.json')
 
 const HomePage = () => {
-
   return (
     <>
       <div className='flex flex-col items-center'>

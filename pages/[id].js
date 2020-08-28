@@ -20,7 +20,6 @@ const Details = ({ module }) => {
       const json = await data.json()
       setLanguages(json)
     })()
-    
   }, [languagesUrl])
 
   return (
