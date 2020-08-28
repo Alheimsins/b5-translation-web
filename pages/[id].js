@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import getModule from '../lib/get-module'
 
 const Language = props => {
@@ -16,9 +17,8 @@ const Details = ({ module }) => {
 
   useEffect(() => {
     (async () => {
-      const data = await fetch(languagesUrl)
-      const json = await data.json()
-      setLanguages(json)
+      const { data } = await axios(languagesUrl)
+      setLanguages(data)
     })()
   }, [languagesUrl])
 
