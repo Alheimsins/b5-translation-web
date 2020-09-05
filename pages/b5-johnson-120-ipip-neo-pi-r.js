@@ -24,13 +24,33 @@ const Details = () => {
   languages.sort(languageSort)
 
   useEffect(() => {
-    (async () => {
-      if (language) {
-        setChoices(getChoices(language))
-        setQuestions(getQuestions(language))
-      }
-    })()
+    if (language) {
+      setChoices(getChoices(language))
+      setQuestions(getQuestions(language))
+    }
   }, [language])
+
+  const Dropdown = () => {
+    return (
+      <div className='inline-block relative w-64'>
+        <select
+          value={language}
+          onChange={event => setLanguage(event.target.value)}
+          className='block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+        >
+          <option value='' key='first-option'>Choose language</option>
+          {languages.map(lang => (
+            <option value={lang.id} key={lang.id}>{lang.text}</option>
+          ))}
+        </select>
+        <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
+          <svg className='fill-current h-4 w-4' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
+          </svg>
+        </div>
+      </div>
+    )
+  }
 
   const handleTranslation = () => {
     const { plus, minus } = choices
@@ -49,15 +69,6 @@ const Details = () => {
     translation.questions = mergedQuestions
     const file = new window.File([JSON.stringify(translation, null, 2)], 'b5-translation.json', { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
-  }
-
-  const Language = props => {
-    const { id, text } = props
-    return (
-      <p key={id} onClick={() => setLanguage(id)} className='cursor-pointer hover:bg-red-400'>
-        {text}
-      </p>
-    )
   }
 
   const Item = props => {
@@ -95,7 +106,7 @@ const Details = () => {
     )
   }
 
-  const Button = props => {
+  const Button = () => {
     return (
       <button onClick={handleTranslation} className='mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
         Generate translation
@@ -107,14 +118,14 @@ const Details = () => {
     <>
       <div className='flex flex-col items-center mb-4'>
         <h1 className='text-4xl font-mono'>{name}</h1>
-        <div className='max-w-m rounded overflow-hidden shadow-lg'>
+        <div className='w-1/2 rounded overflow-hidden shadow-lg'>
           <div className='px-6 py-4'>
             <div className='font-bold text-xl mb-2'>{name}</div>
             <p className='text-gray-700 text-base'>
               {description}
             </p>
-            {!questions && <h2 className='text-2xl font-mono mb-2'>Choose language to translate from</h2>}
-            {!questions && languages.map((lang, index) => <Language {...lang} key={index} />)}
+            <h2 className='text-2xl font-mono mb-2'>Choose language to translate from</h2>
+            <Dropdown />
             {choices && <Choices choices={choices} />}
             {questions && <Questions questions={questions} />}
             {questions && choices && <Button />}
