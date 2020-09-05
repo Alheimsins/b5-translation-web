@@ -12,6 +12,9 @@ const ListItem = props => {
               {description}
             </p>
           </div>
+          <div className='text-right p-2'>
+            Translate this {'>'}
+          </div>
         </div>
       </a>
     </Link>
