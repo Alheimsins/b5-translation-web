@@ -11,7 +11,6 @@ const Details = () => {
   const [language, setLanguage] = useState()
   const [questions, setQuestions] = useState()
   const [choices, setChoices] = useState()
-  console.log(choices)
 
   useEffect(() => {
     (async () => {
@@ -21,6 +20,26 @@ const Details = () => {
       }
     })()
   }, [language])
+
+  const handleTranslation = () => {
+    const { plus, minus } = choices
+    const inputNodes = window.document.querySelectorAll('input')
+    const inputs = Array.prototype.slice.call(inputNodes)
+    const translatedChoices = inputs.filter(input => input.dataset.type === 'choice')
+    const translatedQuestions = inputs.filter(input => input.dataset.type === 'question')
+    console.log(translatedChoices)
+    console.log(translatedQuestions)
+    const translation = {
+      choices: {}
+    }
+    const mergedPlus = plus.map((item, index) => Object.assign({}, item, { text: translatedChoices[index].value }))
+    const mergedMinus = minus.map((item, index) => Object.assign({}, item, { text: translatedChoices[index].value }))
+    const mergedQuestions = questions.map((item, index) => Object.assign({}, item, { text: translatedQuestions[index].value }))
+    translation.choices.plus = mergedPlus
+    translation.choices.minus = mergedMinus
+    translation.questions = mergedQuestions
+    console.log(translation)
+  }
 
   const Language = props => {
     const { id, text } = props
@@ -32,21 +51,21 @@ const Details = () => {
   }
 
   const Item = props => {
-    const { text } = props
+    const { text, dataType } = props
     return (
-      <div>
-        {text}
+      <div className='mt-2'>
+        <p>{text}</p>
+        <p><input type='text' data-type={dataType} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' /></p>
       </div>
     )
   }
 
   const Choices = props => {
     const { choices } = props
-    const { plus, minus } = choices
+    const { plus } = choices
     return (
       <div>
-        {plus.map(item => <Item {...item} key={nanoid()} />)}
-        {minus.map(item => <Item {...item} key={nanoid()} />)}
+        {plus.map(item => <Item {...item} dataType='choice' key={nanoid()} />)}
       </div>
     )
   }
@@ -55,8 +74,16 @@ const Details = () => {
     const { questions } = props
     return (
       <div>
-        {questions.map(item => <Item {...item} key={item.id} />)}
+        {questions.map(item => <Item {...item} dataType='question' id={item.id} key={item.id} />)}
       </div>
+    )
+  }
+
+  const Button = props => {
+    return (
+      <button onClick={handleTranslation} className='mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Generate translation
+      </button>
     )
   }
 
@@ -73,7 +100,8 @@ const Details = () => {
             <h2>Choose language to translate from</h2>
             {languages.map((lang, index) => <Language {...lang} key={index} />)}
             {choices && <Choices choices={choices} />}
-            {choices && <Questions questions={questions} />}
+            {questions && <Questions questions={questions} />}
+            {questions && choices && <Button />}
           </div>
           <div className='flex justify-end px-6 py-4'>
             <a href={repoUrl}>Visit repo</a>
