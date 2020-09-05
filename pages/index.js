@@ -1,5 +1,11 @@
 import ListItem from '../components/list-item'
-const modules = require('../lib/data/modules.json')
+const modules = [
+  {
+    id: 'b5-johnson-120-ipip-neo-pi-r',
+    name: 'b5-johnson-120-ipip-neo-pi-r',
+    description: 'Big Five Johnson 120 IPIP-NEO-PI-R inventory'
+  }
+]
 
 const HomePage = () => {
   return (
