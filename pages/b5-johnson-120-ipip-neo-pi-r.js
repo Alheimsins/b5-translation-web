@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
+const FileSaver = require('file-saver')
 const repoUrl = 'https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r'
 const name = 'b5'
 const description = 'jabba'
@@ -38,7 +39,8 @@ const Details = () => {
     translation.choices.plus = mergedPlus
     translation.choices.minus = mergedMinus
     translation.questions = mergedQuestions
-    console.log(translation)
+    const file = new window.File([JSON.stringify(translation, null, 2)], 'b5-translation.json', { type: 'text/json;charset=utf-8' })
+    FileSaver.saveAs(file)
   }
 
   const Language = props => {
