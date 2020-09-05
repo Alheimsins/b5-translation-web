@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
 const FileSaver = require('file-saver')
-const repoUrl = 'https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r'
 const name = 'b5-johnson-120-ipip-neo-pi-r'
 const description = 'Big Five Johnson 120 IPIP-NEO-PI-R inventory'
 
@@ -114,14 +113,11 @@ const Details = () => {
             <p className='text-gray-700 text-base'>
               {description}
             </p>
-            <h2 className='text-2xl font-mono mb-2'>Choose language to translate from</h2>
-            {languages.map((lang, index) => <Language {...lang} key={index} />)}
+            {!questions && <h2 className='text-2xl font-mono mb-2'>Choose language to translate from</h2>}
+            {!questions && languages.map((lang, index) => <Language {...lang} key={index} />)}
             {choices && <Choices choices={choices} />}
             {questions && <Questions questions={questions} />}
             {questions && choices && <Button />}
-          </div>
-          <div className='flex justify-end px-6 py-4'>
-            <a href={repoUrl}>Visit repo</a>
           </div>
         </div>
       </div>
