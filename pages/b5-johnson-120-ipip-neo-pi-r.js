@@ -72,11 +72,12 @@ const Details = () => {
   }
 
   const Item = props => {
+    const id = nanoid()
     const { text, dataType } = props
     return (
       <div className='mt-2'>
-        <p>{text}</p>
-        <p><input type='text' data-type={dataType} placeholder='Add your translation' className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' /></p>
+        <label for={id} className='mb-1 font-semibold'>{text}</label>
+        <input id={id} type='text' data-type={dataType} placeholder='Add your translation' className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' />
       </div>
     )
   }
