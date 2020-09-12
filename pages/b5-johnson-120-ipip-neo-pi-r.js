@@ -76,7 +76,7 @@ const Details = () => {
     return (
       <div className='mt-2'>
         <p>{text}</p>
-        <p><input type='text' data-type={dataType} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' /></p>
+        <p><input type='text' data-type={dataType} placeholder='Add your translation' className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' /></p>
       </div>
     )
   }
