@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-costa-mccrae-300-ipip-neo-pi-r'
+import Instructions from '../components/instructions'
 const FileSaver = require('file-saver')
 const name = 'b5-costa-mccrae-300-ipip-neo-pi-r'
 const description = 'Big Five Costa and McCrae\'s 300 IPIP-NEO-PI-R items'
@@ -113,28 +114,6 @@ const Details = () => {
       <button onClick={handleTranslation} className='mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
         Generate translation
       </button>
-    )
-  }
-
-  const Instructions = () => {
-    return (
-      <>
-        <div className='flex flex-col items-center mb-4'>
-          <h2 className='text-2xl font-mono'>How to translate</h2>
-          <div className='w-1/2 rounded overflow-hidden shadow-lg'>
-            <div className='px-6 py-4'>
-              <p className='text-gray-700 text-base'>
-                <ul className='list-disc'>
-                  <li>Select the language you want to translate from</li>
-                  <li>Enter your translation below each sentense</li>
-                  <li>When you are finished push the "Generate translation" button. This will generate a file and download it to your computer</li>
-                  <li>Send the downloaded file to <a href='mailto:bigfive-test@rubynor.com' className='text-pink-500'>bigfive-test@rubynor.com</a> and tell us which language you have translated</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </>
     )
   }
 
