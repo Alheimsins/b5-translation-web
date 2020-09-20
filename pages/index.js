@@ -17,7 +17,9 @@ const HomePage = () => {
     <>
       <div className='flex flex-col items-center'>
         <h1 className='text-4xl font-mono'>b5 translations</h1>
-        {modules.map(module => <ListItem {...module} key={module.id} />)}
+        <div className='max-w-md'>
+          {modules.map(module => <ListItem {...module} key={module.id} />)}
+        </div>
       </div>
     </>
   )
