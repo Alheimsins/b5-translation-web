@@ -4,6 +4,11 @@ const modules = [
     id: 'b5-johnson-120-ipip-neo-pi-r',
     name: 'b5-johnson-120-ipip-neo-pi-r',
     description: 'Big Five Johnson 120 IPIP-NEO-PI-R inventory'
+  },
+  {
+    id: 'b5-costa-mccrae-300-ipip-neo-pi-r',
+    name: 'b5-costa-mccrae-300-ipip-neo-pi-r',
+    description: 'Big Five Costa and McCrae\'s 300 IPIP-NEO-PI-R items'
   }
 ]
 
