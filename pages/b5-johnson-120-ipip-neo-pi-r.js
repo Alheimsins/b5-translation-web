@@ -49,6 +49,10 @@ const Details = () => {
     const translatedChoices = inputs.filter(input => input.dataset.type === 'choice')
     const translatedQuestions = inputs.filter(input => input.dataset.type === 'question')
     const translation = {
+      meta: {
+        name,
+        description
+      },
       choices: {}
     }
     const mergedPlus = plus.map((item, index) => Object.assign({}, item, { text: translatedChoices[index].value }))
