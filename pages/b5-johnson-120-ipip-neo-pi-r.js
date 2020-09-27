@@ -6,23 +6,12 @@ const FileSaver = require('file-saver')
 const name = 'b5-johnson-120-ipip-neo-pi-r'
 const description = 'Big Five Johnson 120 IPIP-NEO-PI-R inventory'
 
-const languageSort = (a, b) => {
-  if (a.text < b.text) {
-    return -1
-  }
-  if (a.text > b.text) {
-    return 1
-  }
-  return 0
-}
-
 const Details = () => {
   const info = getInfo()
   const { languages } = info
   const [language, setLanguage] = useState()
   const [questions, setQuestions] = useState()
   const [choices, setChoices] = useState()
-  languages.sort(languageSort)
 
   useEffect(() => {
     if (language) {
