@@ -61,7 +61,8 @@ const Details = () => {
     translation.choices.plus = mergedPlus
     translation.choices.minus = mergedMinus
     translation.questions = mergedQuestions
-    const file = new window.File([JSON.stringify(translation, null, 2)], 'b5-translation.json', { type: 'text/json;charset=utf-8' })
+    const fileName = `b5-translation-${name}.json`
+    const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
   }
 
