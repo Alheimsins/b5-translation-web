@@ -6,23 +6,12 @@ const FileSaver = require('file-saver')
 const name = 'b5-costa-mccrae-300-ipip-neo-pi-r'
 const description = 'Big Five Costa and McCrae\'s 300 IPIP-NEO-PI-R items'
 
-const languageSort = (a, b) => {
-  if (a.text < b.text) {
-    return -1
-  }
-  if (a.text > b.text) {
-    return 1
-  }
-  return 0
-}
-
 const Details = () => {
   const info = getInfo()
   const { languages } = info
   const [language, setLanguage] = useState()
   const [questions, setQuestions] = useState()
   const [choices, setChoices] = useState()
-  languages.sort(languageSort)
 
   useEffect(() => {
     if (language) {
