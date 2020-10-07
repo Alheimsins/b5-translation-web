@@ -26,6 +26,7 @@ const Details = () => {
     const { plus, minus } = choices
     const inputNodes = window.document.querySelectorAll('input')
     const inputs = Array.prototype.slice.call(inputNodes)
+    const gotEmptyValues = inputs.map(item => item.value).filter(item => item === '').length > 0
     const translatedChoices = inputs.filter(input => input.dataset.type === 'choice')
     const translatedQuestions = inputs.filter(input => input.dataset.type === 'question')
     const translation = {
@@ -41,9 +42,13 @@ const Details = () => {
     translation.choices.plus = mergedPlus
     translation.choices.minus = mergedMinus
     translation.questions = mergedQuestions
-    const fileName = `b5-translation-${name}.json`
-    const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
-    FileSaver.saveAs(file)
+    if (gotEmptyValues) {
+      window.alert('Please translate everything before generating file')
+    } else {
+      const fileName = `b5-translation-${name}.json`
+      const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
+      FileSaver.saveAs(file)
+    }
   }
 
   const Choices = props => {
