@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-costa-mccrae-300-ipip-neo-pi-r'
 import Instructions from '../components/instructions'
+import Item from '../components/inventory-item'
 const FileSaver = require('file-saver')
 const name = 'b5-costa-mccrae-300-ipip-neo-pi-r'
 const description = 'Big Five Costa and McCrae\'s 300 IPIP-NEO-PI-R items'
@@ -64,18 +65,6 @@ const Details = () => {
     const fileName = `b5-translation-${name}.json`
     const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
-  }
-
-  const Item = props => {
-    const id = nanoid()
-    const { text, dataType } = props
-    const placeholder = `Your translation of: ${text}`
-    return (
-      <div className='mt-2'>
-        <label for={id} className='mb-1 font-semibold'>{text}</label>
-        <input id={id} type='text' data-type={dataType} placeholder={placeholder} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' />
-      </div>
-    )
   }
 
   const Choices = props => {
