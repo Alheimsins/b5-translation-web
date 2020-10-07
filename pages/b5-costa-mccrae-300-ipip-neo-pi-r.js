@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-costa-mccrae-300-ipip-neo-pi-r'
 import Instructions from '../components/instructions'
 import Item from '../components/inventory-item'
+import Dropdown from '../components/dropdown-menu'
 const FileSaver = require('file-saver')
 const name = 'b5-costa-mccrae-300-ipip-neo-pi-r'
 const description = 'Big Five Costa and McCrae\'s 300 IPIP-NEO-PI-R items'
@@ -20,28 +21,6 @@ const Details = () => {
       setQuestions(getQuestions(language))
     }
   }, [language])
-
-  const Dropdown = () => {
-    return (
-      <div className='inline-block relative w-64'>
-        <select
-          value={language}
-          onChange={event => setLanguage(event.target.value)}
-          className='block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
-        >
-          <option value='' key='first-option'>Choose language</option>
-          {languages.map(lang => (
-            <option value={lang.id} key={lang.id}>{lang.text}</option>
-          ))}
-        </select>
-        <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
-          <svg className='fill-current h-4 w-4' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-            <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
-          </svg>
-        </div>
-      </div>
-    )
-  }
 
   const handleTranslation = () => {
     const { plus, minus } = choices
@@ -111,7 +90,7 @@ const Details = () => {
               {description}
             </p>
             <h2 className='text-2xl font-mono mb-2'>Choose language to translate from</h2>
-            <Dropdown />
+            <Dropdown {...{ languages, language, setLanguage }} />
             {choices && <Choices choices={choices} />}
             {questions && <Questions questions={questions} />}
             {questions && choices && <Button />}
