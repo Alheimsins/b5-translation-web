@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import Item from './list-item'
+import Item from './inventory-item'
 
 const Choices = props => {
   const { choices } = props
