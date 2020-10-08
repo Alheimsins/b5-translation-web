@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
 import Instructions from '../components/instructions'
-import Item from '../components/inventory-item'
 import Choices from '../components/choices'
 import Dropdown from '../components/dropdown-menu'
+import Questions from '../components/questions'
 const FileSaver = require('file-saver')
 const name = 'b5-johnson-120-ipip-neo-pi-r'
 const description = 'Big Five Johnson 120 IPIP-NEO-PI-R inventory'
@@ -49,18 +49,6 @@ const Details = () => {
       const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
       FileSaver.saveAs(file)
     }
-  }
-
-  const Questions = props => {
-    const { questions } = props
-    return (
-      <div>
-        <h2 className='text-2xl font-mono mt-2 mb-2'>Questions</h2>
-        <div>
-          {questions.map(item => <Item {...item} dataType='question' id={item.id} key={item.id} />)}
-        </div>
-      </div>
-    )
   }
 
   const Button = () => {
