@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { nanoid } from 'nanoid'
 import { getInfo, getChoices, getQuestions } from '@alheimsins/b5-johnson-120-ipip-neo-pi-r'
 import Instructions from '../components/instructions'
 import Item from '../components/inventory-item'
+import Choices from '../components/choices'
 import Dropdown from '../components/dropdown-menu'
 const FileSaver = require('file-saver')
 const name = 'b5-johnson-120-ipip-neo-pi-r'
@@ -49,19 +49,6 @@ const Details = () => {
       const file = new window.File([JSON.stringify(translation, null, 2)], fileName, { type: 'text/json;charset=utf-8' })
       FileSaver.saveAs(file)
     }
-  }
-
-  const Choices = props => {
-    const { choices } = props
-    const { plus } = choices
-    return (
-      <div>
-        <h2 className='text-2xl font-mono mt-2 mb-2'>Choices</h2>
-        <div>
-          {plus.map(item => <Item {...item} dataType='choice' key={nanoid()} />)}
-        </div>
-      </div>
-    )
   }
 
   const Questions = props => {
