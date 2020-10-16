@@ -6,7 +6,9 @@ module.exports = {
   variants: {},
   plugins: [],
   future: {
+    defaultLineHeights: true,
+    purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
+    standardFontWeights: true
   }
 }
