@@ -41,7 +41,7 @@
     "tailwindcss": "3.0.12"
   },
   "devDependencies": {
-    "ava": "3.15.0",
+    "ava": "4.0.1",
     "standard": "16.0.4"
   },
   "engines": {
